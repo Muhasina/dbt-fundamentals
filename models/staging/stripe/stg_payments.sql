@@ -1,9 +1,8 @@
 with order_payments as (
     select
-        order_id,
+        orderid,
         sum(case when status = 'success' then amount end) as amount
-
-    from payments
+    from raw.stripe.payment
     group by 1
 )
 
